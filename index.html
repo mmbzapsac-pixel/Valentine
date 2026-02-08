@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>For My Valentine ❤️</title>
+  <style>
+    body {
+      background: #ffe6f0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
+    .msg {
+      display: none;
+      font-size: 24px;
+      margin: 20px 0;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      background: #ff4d88;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>💌 Hey My Love 💌</h1>
+
+  <div class="msg">Happy Valentine’s Day ❤️</div>
+  <div class="msg">Every day with you is my favorite day 🌸</div>
+  <div class="msg">You are my smile, my peace, my everything 💖</div>
+  <div class="msg">I love you endlessly 💕</div>
+
+  <button onclick="showNext()">Tap Me 💝</button>
+
+  <script>
+    let index = 0;
+    function showNext() {
+      const msgs = document.querySelectorAll('.msg');
+      if (index < msgs.length) {
+        msgs[index].style.display = 'block';
+        index++;
+      }
+    }
+  </script>
+
+</body>
+</html>
