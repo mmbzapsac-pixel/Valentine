@@ -1,124 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>For My Valentine ❤️</KHADIJAA>
+<meta charset="UTF-8">
+<title>Just One Question ❤️</title>
 
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      font-family: 'Segoe UI', sans-serif;
-      text-align: center;
-      overflow: hidden;
-      color: #fff;
-    }
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+  }
 
-    h1 {
-      margin-top: 40px;
-      font-size: 36px;
-      animation: fadeIn 2s;
-    }
+  #box {
+    background: rgba(255,255,255,0.15);
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 400px;
+    animation: fade 1s;
+  }
 
-    .msg {
-      display: none;
-      font-size: 24px;
-      margin: 20px;
-      animation: fadeInUp 1.2s;
-    }
+  h1 {
+    font-size: 26px;
+    margin-bottom: 25px;
+  }
 
-    button {
-      margin-top: 30px;
-      padding: 12px 28px;
-      font-size: 18px;
-      border: none;
-      border-radius: 25px;
-      background: #ff4d6d;
-      color: white;
-      cursor: pointer;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    }
+  button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    font-size: 18px;
+    border: none;
+    border-radius: 25px;
+    background: #ff4d6d;
+    color: white;
+    cursor: pointer;
+  }
 
-    button:hover {
-      background: #ff2e55;
-    }
+  button:hover {
+    background: #ff2e55;
+  }
 
-    /* Floating hearts */
-    .heart {
-      position: absolute;
-      bottom: -20px;
-      color: #ff4d6d;
-      font-size: 20px;
-      animation: float 6s linear infinite;
-    }
-
-    @keyframes float {
-      0% { transform: translateY(0); opacity: 1; }
-      100% { transform: translateY(-800px); opacity: 0; }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+  @keyframes fade {
+    from {opacity:0; transform: scale(0.95);}
+    to {opacity:1; transform: scale(1);}
+  }
+</style>
 </head>
 
 <body>
 
-  <h1>💖 Hey My Love 💖</h1>
+<div id="box">
+  <h1 id="question">Do you love me? ❤️</h1>
+  <div id="options"></div>
+</div>
 
-  <div class="msg">Happy Valentine’s Day ❤️</div>
-  <div class="msg">You are the most beautiful part of my life,you are the reason behind my smile , a reason of life , a purpose to surivive 🌸</div>
-  <div class="msg">Every moment with you feels special ✨</div>
-  <div class="msg">Your smile is my favorite thing 😍</div>
-  <div class="msg">I am so lucky to have you 💕</div>
-  <div class="msg">I love you more than words can ever say ❤️</div>
+<audio id="music" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3">
+</audio>
 
-  <button onclick="nextMessage()">Tap to continue 💌</button>
-
-  <!-- Background Music -->
-  <audio id="bgMusic" loop>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-  </audio>
-
-  <script>
-    let index = 0;
-    let started = false;
-
-    function nextMessage() {
-      const msgs = document.querySelectorAll('.msg');
-
-      // Start music on first click (browser rule)
-      if (!started) {
-        document.getElementById("bgMusic").play();
-        started = true;
-      }
-
-      if (index < msgs.length) {
-        msgs[index].style.display = "block";
-        index++;
-      }
+<script>
+  const steps = [
+    {
+      q: "Do you love me? ❤️",
+      o: ["Yes 😍", "No 🙄"]
+    },
+    {
+      q: "So why do you smile when you see me? 😉",
+      o: ["I don't know 😳", "Maybe I care ❤️"]
+    },
+    {
+      q: "If I disappear for one day, will you miss me? 🥺",
+      o: ["No 😏", "Yes 😭"]
+    },
+    {
+      q: "Be honest… am I important to you? 💭",
+      o: ["Maybe 🤔", "Very ❤️"]
+    },
+    {
+      q: "One last question…",
+      o: ["Tell me ❤️"]
+    },
+    {
+      q: "I knew it 😌💖",
+      o: []
     }
+  ];
 
-    // Create floating hearts
-    setInterval(() => {
-      const heart = document.createElement("div");
-      heart.className = "heart";
-      heart.innerHTML = "❤️";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.fontSize = (Math.random() * 20 + 15) + "px";
-      document.body.appendChild(heart);
+  const finalMessages = [
+    "No matter what you clicked…",
+    "I already know the truth ❤️",
+    "You mean more to me than words can explain",
+    "Every moment with you feels special",
+    "And I just want you to know one thing…",
+    "I LOVE YOU 💖"
+  ];
 
-      setTimeout(() => heart.remove(), 6000);
-    }, 400);
-  </script>
+  let step = 0;
+
+  function render() {
+    const q = document.getElementById("question");
+    const o = document.getElementById("options");
+    o.innerHTML = "";
+
+    if (step < steps.length) {
+      q.innerText = steps[step].q;
+      steps[step].o.forEach(text => {
+        const btn = document.createElement("button");
+        btn.innerText = text;
+        btn.onclick = next;
+        o.appendChild(btn);
+      });
+    } else {
+      showFinal();
+    }
+  }
+
+  function next() {
+    step++;
+    render();
+  }
+
+  function showFinal() {
+    document.getElementById("music").play();
+    const q = document.getElementById("question");
+    const o = document.getElementById("options");
+    o.innerHTML = "";
+    let i = 0;
+
+    const interval = setInterval(() => {
+      q.innerText = finalMessages[i];
+      i++;
+      if (i >= finalMessages.length) clearInterval(interval);
+    }, 2000);
+  }
+
+  render();
+</script>
 
 </body>
 </html>
